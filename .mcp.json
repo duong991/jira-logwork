@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "jira-work-logger": {
+      "command": "/Volumes/ExternalHome/Users/gnoud/dev/workInVNPT/jira/.venv/bin/python",
+      "args": [
+        "/Volumes/ExternalHome/Users/gnoud/dev/workInVNPT/jira/server.py"
+      ]
+    }
+  }
+}
