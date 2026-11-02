@@ -26,6 +26,9 @@ Use the specialized skills in `.agents/skills/` (mirrored in `.claude/skills/`):
 3. **`jira-ticket-manager`**:
    - Tạo mới hoặc cập nhật ticket Jira theo quy chuẩn VNPT (tiền tố `[BE]`/`[FE]`, estimate, mô tả).
    - Trigger: *"tạo ticket jira"*, *"cập nhật ticket"*.
+4. **`jira-setup`**:
+   - Phỏng vấn và khảo sát thiết lập `config.yaml` từ `config.example.yaml` theo phương pháp Grill-me (rounds, frontier, auto facts-finding).
+   - Trigger: *"setup jira"*, *"cấu hình jira"*, *"hướng dẫn setup config"*, `/setup`, `/jira-setup`.
 
 ## Hard Invariants
 

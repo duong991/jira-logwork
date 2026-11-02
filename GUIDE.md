@@ -125,6 +125,13 @@ Gọi tool scan_daily_work với date="2026-11-01", sau đó tóm tắt các tí
 Lấy danh sách các ticket Jira đang In Progress của tôi, sau đó log 2h vào ticket liên quan đến backend.
 ```
 
+### Kịch bản 4: Hướng dẫn thiết lập cấu hình với Grill-Me
+```text
+/jira-setup
+# Hoặc: "hướng dẫn tôi cấu hình config.yaml"
+```
+Agent sẽ phỏng vấn theo phương pháp Grill-me, tự động trinh sát môi trường git máy bạn và đồng hành tạo file `config.yaml`.
+
 ---
 
 ## 5. Lưu ý & Xử lý sự cố
