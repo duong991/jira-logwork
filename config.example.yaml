@@ -1,19 +1,83 @@
 jira:
-  url: "https://your-company.atlassian.net"
-  email: "you@your-company.com"
-  api_token: "create one at https://id.atlassian.com/manage-profile/security/api-tokens"
+  # URL của Jira instance (Jira Server/Data Center hoặc Jira Cloud)
+  # Ví dụ Jira Server / Data Center: "https://cntt.vnpt.vn" hoặc "https://jira.your-company.com"
+  # Ví dụ Jira Cloud: "https://your-domain.atlassian.net"
+  url: "https://cntt.vnpt.vn"
+
+  # Mã dự án mặc định để tạo ticket và tìm kiếm
   project_key: "PROJ"
 
+  # Tùy chọn chỉ định kiểu Jira ('server' hoặc 'cloud'). Để trống hệ thống sẽ tự động nhận diện.
+  # server_type: "server"
+
+  # --- PHƯƠNG THỨC XÁC THỰC JIRA (Chọn 1 trong các cách bên dưới) ---
+
+  # Cách 1 (Khuyên dùng cho Jira Server / Data Center): Personal Access Token (PAT)
+  # Tạo token tại: Jira -> Profile -> Personal Access Tokens -> Create token
+  personal_access_token: "YOUR_PERSONAL_ACCESS_TOKEN"
+
+  # Cách 2: Dùng Username & Password (hoặc tài khoản SSO/AD nội bộ cho Jira Server)
+  # username: "your_username"
+  # password: "your_password"
+
+  # Cách 3: Dùng Email & API Token (Dành cho Jira Cloud - Atlassian Cloud)
+  # Tạo API token tại: https://id.atlassian.com/manage-profile/security/api-tokens
+  # email: "you@your-company.com"
+  # api_token: "your-atlassian-api-token"
+
 git:
-  author_email: "you@your-company.com"
+  # Email tác giả commit chính
+  author_email: "you@example.com"
+
+  # Danh sách tất cả email / username / display name xuất hiện trong git log của bạn
+  # (Hữu ích khi bạn commit bằng nhiều email hoặc username khác nhau qua các repo)
+  author_emails:
+    - "you@example.com"
+    - "your_username"
+    - "Your Full Name"
+
+  # Thư mục gốc chứa các git repository clone về máy
   repo_roots:
-    - ~/code
+    - ~/dev/projects
+
+  # Danh sách GitHub / GitLab organization/namespace được tính là repo công việc
+  # (Các repo cá nhân nằm cùng thư mục cha sẽ tự động bị bỏ qua nếu không thuộc org này)
   remote_orgs:
-    - your-github-org
+    - your-org
+
+  # Hoặc chỉ định trực tiếp danh sách đường dẫn tuyệt đối đến các repo cần quét
   repos: []
+  # repos:
+  #   - /path/to/project/repo-backend
+  #   - /path/to/project/repo-frontend
 
 defaults:
+  # Loại issue mặc định khi tạo ticket (Task, Story, Bug,...)
   issue_type: "Task"
-  frontend_services: []
+
+  # Danh sách tên service/repo frontend để tự động gán prefix [FE] thay vì [BE]
+  frontend_services:
+    - frontend-web
+    - mobile-app
+
+  # Cấu hình các trường tùy chỉnh (Custom Fields) theo yêu cầu của dự án (ví dụ: Jira VNPT NCPTWORK)
+  custom_fields:
+    # Trường Công đoạn (Single Select / Option)
+    cong_doan:
+      field_id: "customfield_13000"
+      option_id: "13000"
+      value: "Nghiên cứu, phát triển, nâng cấp"
+    # Trường Mã SPDA (Cascading Select - 2 cấp cha / con)
+    ma_spda:
+      field_id: "customfield_13100"
+      parent_id: "13100"
+      parent_value: "ATTT"
+      child_id: "13270"
+      child_value: "Chung/CPCATTTT"
+
+  # Cấu hình trường Task Type nếu dự án có phân loại (để trống nếu không dùng)
   task_type_field: ""
   task_type_options: {}
+  # task_type_options:
+  #   development: "10200"
+  #   maintenance: "10201"
